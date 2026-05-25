@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "defense-slides",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "preview", "--host"],
+      "port": 7891,
+      "autoPort": false
+    }
+  ]
+}
