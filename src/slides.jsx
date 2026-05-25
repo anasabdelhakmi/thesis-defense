@@ -10,30 +10,39 @@ import {
 function S01() {
   return (
     <div className="slide title-slide">
-      <div className="title-body">
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 22 }}>
-          <div style={{ background: 'white', borderRadius: 6, padding: '5px 8px', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-            <img src="figures/nus-shield.png" alt="NUS" style={{ height: 44, width: 'auto', display: 'block' }} />
+      <div className="title-body" style={{ justifyContent: 'space-between', paddingTop: 36, paddingBottom: 36 }}>
+        {/* NUS header */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+          <div style={{ background: 'white', borderRadius: 6, padding: '6px 10px', display: 'flex', alignItems: 'center' }}>
+            <img src="figures/nus-shield.png" alt="NUS" style={{ height: 52, width: 'auto', display: 'block' }} />
           </div>
           <div>
-            <div style={{ fontSize: '1.05em', fontWeight: 700, color: 'white', letterSpacing: '.02em', marginBottom: 3 }}>
+            <div style={{ fontSize: '1.05em', fontWeight: 700, color: 'white', letterSpacing: '.01em' }}>
               National University of Singapore
             </div>
-            <div style={{ fontSize: '.82em', color: 'rgba(150,185,230,.80)', letterSpacing: '.04em' }}>
-              Institute of Operations Research and Analytics &nbsp;·&nbsp; Ph.D. Thesis Defense
+            <div style={{ fontSize: '.80em', color: 'rgba(150,185,230,.80)', marginTop: 3 }}>
+              Institute of Operations Research and Analytics
             </div>
           </div>
         </div>
-        <div className="title-main" style={{ fontSize: '2.15em' }}>
-          Data-Driven Sequential Decision-Making:<br />
-          Forward-Looking Information and Robustness<br />
-          in Dynamic Uncertain Environments
+
+        {/* Title block — centre of slide */}
+        <div>
+          <div className="title-main" style={{ marginBottom: 0, fontSize: '2.1em', textAlign: 'left' }}>
+            Data-Driven Sequential Decision-Making:<br />
+            Forward-Looking Information and Robustness<br />
+            in Dynamic Uncertain Environments
+          </div>
         </div>
-        <div className="title-rule" style={{ marginTop: 22, marginBottom: 18 }} />
-        <div className="title-author" style={{ fontSize: '1.25em' }}>Anas Abdelhakmi</div>
-        <div className="title-info" style={{ fontSize: '.92em', marginTop: 8 }}>
-          Supervised by Prof. Andrew E.B. Lim &amp; Prof. Jussi Keppo<br />
-          26 May 2026
+
+        {/* Author / info block */}
+        <div>
+          <div className="title-rule" style={{ marginBottom: 20 }} />
+          <div className="title-author" style={{ fontSize: '1.2em', marginBottom: 8 }}>Anas Abdelhakmi</div>
+          <div className="title-info">
+            Supervised by Prof. Andrew E.B. Lim &amp; Prof. Jussi Keppo<br />
+            Ph.D. Thesis Defense &nbsp;·&nbsp; 26 May 2026
+          </div>
         </div>
       </div>
     </div>
@@ -46,38 +55,31 @@ S01.frags = 0
 // ─────────────────────────────────────────────────────────────────────────────
 function S02({ frag }) {
   return (
-    <ContentSlide title="Thesis at a Glance" stripe="var(--navy)">
-      <div style={{ marginBottom: 6 }}>
-        <Intuition>
-          <strong>Unifying theme:</strong> A <strong>sequential decision-maker</strong> learns from data and acts over time —
-          but <strong>the past may not reflect the future</strong>. How do we embed <strong>forward-looking signals</strong> into dynamic models,
-          and how can we design policies that are <strong>robust to model misspecification</strong>?
-        </Intuition>
-      </div>
+    <ContentSlide title="Thesis at a Glance: Forward-Looking Information and Robustness in Sequential Decision-Making" stripe="var(--navy)">
       <div className="three-col" style={{ gap: 14, flex: 1 }}>
         <Frag at={1} frag={frag}>
-          <Card color="blue" title="Part I — Dynamic Black–Litterman" style={{ height: '100%' }}>
+          <Card color="blue" title="Part I: Dynamic Black–Litterman" style={{ height: '100%' }}>
             <strong>Views on future asset returns in continuous time.</strong>
             <br /><br />
-            Conditioning on a view turns GBM dynamics into a generalized <em>Brownian bridge</em> — giving a fully tractable, closed-form optimal portfolio.
+            Conditioning on a view turns GBM dynamics into a generalized <em>Brownian bridge</em>, giving a fully tractable, closed-form optimal portfolio.
             <br /><br />
             <span className="c-blue bold">New:</span> forward-looking information induces hedging decisions and creates bridging behavior in asset dynamics.
           </Card>
         </Frag>
         <Frag at={2} frag={frag}>
-          <Card color="gold" title="Part II — Dynamic Factor Models" style={{ height: '100%' }}>
+          <Card color="gold" title="Part II: Dynamic Factor Models" style={{ height: '100%' }}>
             <strong>Views on future factor states, not just asset returns.</strong>
             <br /><br />
             A <em>dual transformation</em>: views alter both how factors evolve (<em>mean-reverting bridge</em>) and how current factor states forecast returns.
             <br /><br />
-            <span className="c-gold bold">New:</span> views reshape how contextual information is used — changing both the <em>myopic risk-return tradeoff</em> and the <em>hedging demand</em> via factor-view correlation <M m="\Sigma^{S,X}" />.
+            <span className="c-gold bold">New:</span> views reshape how contextual information is used, changing both the <em>myopic risk-return tradeoff</em> and the <em>hedging demand</em> via factor-view correlation <M m="\Sigma^{S,X}" />.
           </Card>
         </Frag>
         <Frag at={3} frag={frag}>
-          <Card color="red" title="Part III — Robust Secretary Problems" style={{ height: '100%' }}>
+          <Card color="red" title="Part III: Robust Secretary Problems" style={{ height: '100%' }}>
             <strong>When worst-case optimization isn't enough.</strong>
             <br /><br />
-            DRO leaves the nominal policy (e.g., the 1/e stopping rule) unchanged across all variants — yet it remains highly sensitive to misspecification.
+            DRO leaves the nominal policy (e.g., the 1/e stopping rule) unchanged across all variants; yet it remains highly sensitive to misspecification.
             <br /><br />
             <span className="c-red bold">New:</span> convex mean-sensitivity frontier; robustness via process redesign.
           </Card>
@@ -85,7 +87,7 @@ function S02({ frag }) {
       </div>
       <Frag at={4} frag={frag}>
         <Key style={{ marginTop: 8 }}>
-          How to <strong>optimally incorporate information</strong> into sequential decisions — and how to remain <strong>robust when the past no longer predicts the future</strong>?
+          How to <strong>optimally incorporate information</strong> into sequential decisions; and how to remain <strong>robust when the past no longer predicts the future</strong>?
         </Key>
       </Frag>
     </ContentSlide>
@@ -103,7 +105,7 @@ function S03() {
       eyebrow="PART I"
       eyebrowSize="1.1em"
       title="Dynamic Black–Litterman Model"
-      sub="Practitioners have views about future outcomes — but dynamic models are typically built on historical data. How do we embed forward-looking information into a backward-looking model, and update the optimal decision as new data arrives?"
+      sub="Practitioners have views about future outcomes, but dynamic models are typically built on historical data. How do we embed forward-looking information into a backward-looking model, and update the optimal decision as new data arrives?"
       footer="Abdelhakmi & Lim · Dynamic Black–Litterman · Operations Research (2026)"
     />
   )
@@ -134,15 +136,15 @@ function S04({ frag }) {
               <div className="thm-lbl red">But it is Fundamentally Static</div>
               <div className="thm-body">
                 <ul style={{ paddingLeft: 16, margin: 0, lineHeight: 1.7 }}>
-                  <li><strong>Views and decisions must share the same horizon</strong> — no way to use a 3-month view in a 5-year portfolio</li>
-                  <li><strong>Single-period only</strong> — no prescription for how to update the model or rebalance as new data arrives</li>
+                  <li><strong>Views and decisions must share the same horizon</strong>: no way to use a 3-month view in a 5-year portfolio</li>
+                  <li><strong>Single-period only</strong>: no prescription for how to update the model or rebalance as new data arrives</li>
                 </ul>
               </div>
             </div>
           </Frag>
           <Frag at={2} frag={frag}>
             <Key style={{ marginTop: 8 }}>
-              We remove both restrictions — continuous-time trading with views over any horizon.
+              We remove both restrictions: continuous-time trading with views over any horizon.
             </Key>
           </Frag>
         </div>
@@ -153,34 +155,34 @@ function S04({ frag }) {
               <div className="thm-body">
                 <div className="paper-row" style={{ marginBottom: 3 }}>
                   <div className="pnum" style={{ background: 'var(--blue)' }}>B&L</div>
-                  <div className="ptxt"><strong>Black &amp; Litterman (1991, 1992)</strong> — original; single-period; horizons must match</div>
+                  <div className="ptxt"><strong>Black &amp; Litterman (1991, 1992)</strong>: original; single-period; horizons must match</div>
                 </div>
                 <div className="paper-row" style={{ marginBottom: 3 }}>
                   <div className="pnum" style={{ background: 'var(--muted)' }}>H&W</div>
-                  <div className="ptxt"><strong>He &amp; Litterman (2002), Walters (2011)</strong> — surveys &amp; practical extensions; still static</div>
+                  <div className="ptxt"><strong>He &amp; Litterman (2002), Walters (2011)</strong>: surveys &amp; practical extensions; still static</div>
                 </div>
                 <div className="paper-row" style={{ marginBottom: 3 }}>
                   <div className="pnum" style={{ background: 'var(--muted)' }}>BGP</div>
-                  <div className="ptxt"><strong>Bertsimas, Gupta &amp; Paschalidis (2012)</strong> — inverse optimization perspective on BL; single-period</div>
+                  <div className="ptxt"><strong>Bertsimas, Gupta &amp; Paschalidis (2012)</strong>: inverse optimization perspective on BL; single-period</div>
                 </div>
                 <div className="paper-row">
                   <div className="pnum" style={{ background: 'var(--muted)' }}>L&X</div>
-                  <div className="ptxt"><strong>Lim &amp; Xiao (2020)</strong> — graphical model for complex view structures; single-period</div>
+                  <div className="ptxt"><strong>Lim &amp; Xiao (2020)</strong>: graphical model for complex view structures; single-period</div>
                 </div>
               </div>
             </div>
           </Frag>
           <Frag at={4} frag={frag}>
             <div className="thm navy" style={{ marginBottom: 7 }}>
-              <div className="thm-lbl">Dynamic Extensions — Not Forward-Looking</div>
+              <div className="thm-lbl">Dynamic Extensions: Not Forward-Looking</div>
               <div className="thm-body">
                 <div className="paper-row" style={{ marginBottom: 3 }}>
                   <div className="pnum" style={{ background: 'var(--navy)' }}>F&amp;S</div>
-                  <div className="ptxt"><strong>Frey &amp; Runggaldier (2012), Sass (2017)</strong> — views are noisy signals on the <em>current, unobserved drift</em> — a filtering problem, not a forecast</div>
+                  <div className="ptxt"><strong>Frey &amp; Runggaldier (2012), Sass (2017)</strong>: views are noisy signals on the <em>current, unobserved drift</em>, a filtering problem, not a forecast</div>
                 </div>
                 <div className="paper-row">
                   <div className="pnum" style={{ background: 'var(--navy)' }}>D&amp;L</div>
-                  <div className="ptxt"><strong>Davis &amp; Lleo (2013–2016)</strong> — views on factor <em>trajectories</em>, not terminal outcomes; horizons must still match</div>
+                  <div className="ptxt"><strong>Davis &amp; Lleo (2013–2016)</strong>: views on factor <em>trajectories</em>, not terminal outcomes; horizons must still match</div>
                 </div>
               </div>
             </div>
@@ -191,7 +193,7 @@ function S04({ frag }) {
               <div className="thm-body">
                 <div className="paper-row">
                   <div className="pnum" style={{ background: 'var(--green)' }}>A&L</div>
-                  <div className="ptxt"><strong>Abdelhakmi &amp; Lim (2026)</strong> — views on <em>realized future returns</em>; continuous-time; mismatched horizons; closed-form portfolio</div>
+                  <div className="ptxt"><strong>Abdelhakmi &amp; Lim (2026)</strong>: views on <em>realized future returns</em>; continuous-time; mismatched horizons; closed-form portfolio</div>
                 </div>
               </div>
             </div>
@@ -212,7 +214,7 @@ function S05({ frag }) {
       <div className="col-5545">
         <div>
           <div className="thm" style={{ marginBottom: 8 }}>
-            <div className="thm-lbl">Prior Asset Dynamics — calibrated from historical data</div>
+            <div className="thm-lbl">Prior Asset Dynamics: calibrated from historical data</div>
             <div className="thm-body">
               <M m="N" /> risky assets. Price process (GBM):
               <D m="\frac{dS_i(t)}{S_i(t)} = \mu_i\,dt + dW_i(t)" />
@@ -232,7 +234,7 @@ function S05({ frag }) {
           </Frag>
           <Frag at={4} frag={frag}>
             <Intuition style={{ marginTop: 8 }}>
-              <strong>Key question:</strong> How does <M m="X^y(t) := X(t)\mid Y=y" /> evolve? <strong>Conditioning on a future target</strong> anchors the path — and as prices arrive, the model <strong>continuously updates</strong>, pulling trajectories closer to that view. The answer is surprisingly clean.
+              <strong>Key question:</strong> How does <M m="X^y(t) := X(t)\mid Y=y" /> evolve? <strong>Conditioning on a future target</strong> anchors the path; as prices arrive, the model <strong>continuously updates</strong>, pulling trajectories closer to that view. The answer is surprisingly clean.
             </Intuition>
           </Frag>
         </div>
@@ -241,14 +243,14 @@ function S05({ frag }) {
             <div>
               <div className="sm bold c-navy" style={{ marginBottom: 3 }}>Historical data + prior predicted paths</div>
               <img src="figures/prior_paths.png" alt="Historical path and prior fan" style={{ width: '100%', borderRadius: 4, border: '1px solid var(--border)' }} />
-              <div className="fig-cap">Without a view, the model fans out — high uncertainty about the future</div>
+              <div className="fig-cap">Without a view, the model fans out: high uncertainty about the future</div>
             </div>
           </Frag>
           <Frag at={3} frag={frag}>
             <div>
               <div className="sm bold c-navy" style={{ marginBottom: 3 }}>After conditioning on a view at <M m="T" /></div>
               <img src="figures/posterior_bridge.png" alt="Posterior bridge paths with view" style={{ width: '100%', borderRadius: 4, border: '1px solid var(--border)' }} />
-              <div className="fig-cap">A view at <M m="T" /> reshapes the entire path distribution — the model updates continuously as it approaches the target</div>
+              <div className="fig-cap">A view at <M m="T" /> reshapes the entire path distribution; the model updates continuously as it approaches the target</div>
             </div>
           </Frag>
         </div>
@@ -263,14 +265,14 @@ S05.frags = 4
 // ─────────────────────────────────────────────────────────────────────────────
 function S06({ frag }) {
   return (
-    <ContentSlide title="Proposition 1 — Conditional Log-Return Dynamics" stripe="var(--blue)">
+    <ContentSlide title="Proposition 1: Conditional Log-Return Dynamics" stripe="var(--blue)">
       <Intuition>
-        Conditioning on the view <M m="Y=y" /> <strong>reweights the probability measure</strong> — under <M m="\mathbb{Q}" />, the asset dynamics acquire a systematic drift that encodes the view at every instant.
+        Conditioning on the view <M m="Y=y" /> <strong>reweights the probability measure</strong>; under <M m="\mathbb{Q}" />, the asset dynamics acquire a systematic drift that encodes the view at every instant.
       </Intuition>
       <div className="col-4060">
         <div>
           <div className="thm" style={{ marginBottom: 8 }}>
-            <div className="thm-lbl">Proposition 1 — Posterior SDE</div>
+            <div className="thm-lbl">Proposition 1: Posterior SDE</div>
             <div className="thm-body">
               <D m="dX^y(t) = \Bigl(\mu^x + \underbrace{\beta_1(y - TP\mu^x)}_{\text{(i)}} + \underbrace{\beta_2(t)\bigl(\mathbb{E}[X^y(t)] - X^y(t)\bigr)}_{\text{(ii)}}\Bigr)dt + dW^y(t)" />
               with coefficients:
@@ -280,17 +282,17 @@ function S06({ frag }) {
           </div>
           <Frag at={1} frag={frag}>
             <div className="thm gold" style={{ marginBottom: 6 }}>
-              <div className="thm-lbl gold">(i) — View Innovation</div>
+              <div className="thm-lbl gold">(i): View Innovation</div>
               <div className="thm-body">
-                <M m="\beta_1(y - TP\mu^x)" />: permanent drift adjustment proportional to how <strong>surprising the view is</strong> — the gap between the observed view <M m="y" /> and the model's prior expectation <M m="TP\mu^x" />
+                <M m="\beta_1(y - TP\mu^x)" />: permanent drift adjustment proportional to how <strong>surprising the view is</strong>: the gap between the observed view <M m="y" /> and the model's prior expectation <M m="TP\mu^x" />
               </div>
             </div>
           </Frag>
           <Frag at={2} frag={frag}>
             <div className="thm red">
-              <div className="thm-lbl red">(ii) — A New State Variable Emerges</div>
+              <div className="thm-lbl red">(ii): A New State Variable Emerges</div>
               <div className="thm-body">
-                <M m="X^y(t)" /> is a <strong>new state variable</strong> — the process dynamically encodes the view and is pulled toward it; <M m="\beta_2(t)" /> <strong>increases</strong> over time and the pull dominates near <M m="T" />
+                <M m="X^y(t)" /> is a <strong>new state variable</strong>; the process dynamically encodes the view and is pulled toward it; <M m="\beta_2(t)" /> <strong>increases</strong> over time and the pull dominates near <M m="T" />
               </div>
             </div>
           </Frag>
@@ -303,7 +305,7 @@ function S06({ frag }) {
               <div className="thm dark" style={{ padding: '6px 14px' }}>
                 <div className="thm-lbl white">Bridge Behavior</div>
                 <div className="thm-body">
-                  The path behaves <strong>almost like a bridge</strong> — with no view noise (<M m="\Omega=0" />), it would be an exact bridge hitting <M m="y" /> at <M m="T" />. With noise, the bridge behavior <strong>persists</strong> but the hitting time is pushed to <M m="\tilde{T} > T" />. We show this precisely on the next slide.
+                  The path behaves <strong>almost like a bridge</strong>; with no view noise (<M m="\Omega=0" />), it would be an exact bridge hitting <M m="y" /> at <M m="T" />. With noise, the bridge behavior <strong>persists</strong> but the hitting time is pushed to <M m="\tilde{T} > T" />. We show this precisely on the next slide.
                 </div>
               </div>
             </Frag>
@@ -320,7 +322,7 @@ S06.frags = 4
 // ─────────────────────────────────────────────────────────────────────────────
 function S07({ frag }) {
   return (
-    <ContentSlide title="Theorem 1 — The Generalized Brownian Bridge" stripe="var(--blue)">
+    <ContentSlide title="Theorem 1: The Generalized Brownian Bridge" stripe="var(--blue)">
       {/* frag 0: intuition only */}
       <Intuition>
         Take <strong>one asset</strong>. What does conditioning on the view <M m="Y=y" /> do to the path?
@@ -335,12 +337,12 @@ function S07({ frag }) {
             <div style={{ border: '2px solid var(--navy)', borderRadius: 5, padding: 4, display: 'flex', flexDirection: 'column', gap: 3, flexShrink: 0 }}>
               {/* Header — always visible once group appears */}
               <div className="thm dark" style={{ margin: 0, padding: '3px 10px' }}>
-                <div className="thm-lbl white">Scalar Case — <span style={{ textTransform: 'none' }}><M m="dX(t) = \mu\,dt + \sigma\,dW(t)" /></span></div>
+                <div className="thm-lbl white">Scalar Case: <span style={{ textTransform: 'none' }}><M m="dX(t) = \mu\,dt + \sigma\,dW(t)" /></span></div>
               </div>
               {/* No View Noise green box — frag 2 */}
               {frag >= 2 && (
                 <div className="thm green" style={{ margin: 0, padding: '4px 10px' }}>
-                  <div className="thm-lbl green">No view noise — <span style={{ textTransform: 'none' }}><M m="Y = X(T)" /></span></div>
+                  <div className="thm-lbl green">No view noise: <span style={{ textTransform: 'none' }}><M m="Y = X(T)" /></span></div>
                   <div className="thm-body">
                     <M m="X^y(t)" /> is an <strong>exact Brownian bridge</strong> hitting <M m="y" /> at <M m="T" />:
                     <D m="dX^y = \frac{y - X^y(t)}{T - t}\,dt + \sigma\,dW" />
@@ -350,10 +352,10 @@ function S07({ frag }) {
               {/* With View Noise gold box — header at frag 5, body at frag 6 */}
               {frag >= 5 && (
                 <div className="thm gold" style={{ margin: 0, padding: '4px 10px' }}>
-                  <div className="thm-lbl gold">With view noise — <span style={{ textTransform: 'none' }}><M m="Y = X(T) + \varepsilon" />, <M m="\varepsilon \sim \mathcal{N}(0,\omega^2)" /></span></div>
+                  <div className="thm-lbl gold">With view noise: <span style={{ textTransform: 'none' }}><M m="Y = X(T) + \varepsilon" />, <M m="\varepsilon \sim \mathcal{N}(0,\omega^2)" /></span></div>
                   {frag >= 7 && (
                     <div className="thm-body">
-                      Path is <strong>uncertain</strong> at <M m="T" /> — it keeps going, hitting <M m="y" /> at extended time:
+                      Path is <strong>uncertain</strong> at <M m="T" />; it keeps going, hitting <M m="y" /> at extended time:
                       <D m="\tilde{T} = T + \frac{\omega^2}{\sigma^2}" />
                     </div>
                   )}
@@ -445,7 +447,7 @@ function S08({ frag }) {
           {/* Objective — frag 1 */}
           {frag >= 1 && (
             <div className="thm gold" style={{ margin: 0 }}>
-              <div className="thm-lbl gold">Objective — CRRA utility, <span style={{ textTransform: 'none' }}><M m="\gamma > 1" /></span></div>
+              <div className="thm-lbl gold">Objective: CRRA utility, <span style={{ textTransform: 'none' }}><M m="\gamma > 1" /></span></div>
               <div className="thm-body" style={{ fontSize: '0.88em' }}>
                 <D m="\max_\pi\;\mathbb{E}\!\left[\frac{Z(T)^{1-\gamma}}{1-\gamma}\;\Bigg|\;Z(t)=z,\;X^y(t)=x,\;y\right]" />
               </div>
@@ -479,7 +481,7 @@ function S08({ frag }) {
                 <span className="bold c-blue">MV term: </span>balances the myopic risk-return tradeoff using the <em>view-adjusted</em> drift <M m="\tilde\mu(t,x,y)" />.
               </div>
               <div style={{ background: '#F0FDF4', border: '1px solid var(--green)', borderRadius: 4, padding: '5px 10px', fontSize: '0.81em' }}>
-                <span className="bold c-green">Hedging term: </span>intertemporal hedge against changes in the views covariate <M m="X^y(t)" /> — as <M m="X^y" /> moves, it shifts <M m="\tilde\mu" /> and the value function; this position offsets that sensitivity. Larger when views are informative; vanishes at <M m="T" />.
+                <span className="bold c-green">Hedging term: </span>intertemporal hedge against changes in the views covariate <M m="X^y(t)" />; as <M m="X^y" /> moves, it shifts <M m="\tilde\mu" /> and the value function; this position offsets that sensitivity. Larger when views are informative; vanishes at <M m="T" />.
               </div>
             </div>
           )}
@@ -488,9 +490,9 @@ function S08({ frag }) {
             <div className="thm green" style={{ margin: 0 }}>
               <div className="thm-lbl green">ODE System for Hedging Coefficients</div>
               <div className="thm-body" style={{ fontSize: '0.78em' }}>
-                <M m="A(t)" /> — matrix Riccati, <M m="A(T)=0" />:
+                <M m="A(t)" />: matrix Riccati, <M m="A(T)=0" />:
                 <D m="\begin{aligned}A'(t) &+ \tfrac{1-\gamma}{\gamma}\eta_t\Sigma\eta_t + \tfrac{1}{\gamma}\bigl(A(t)\Sigma\eta_t+\eta_t\Sigma A(t)\bigr)\\&+ \tfrac{1}{\gamma}A(t)\Sigma A(t) = 0\end{aligned}" />
-                <M m="b(t)" /> — linear ODE, <M m="b(T)=0" />:
+                <M m="b(t)" />: linear ODE, <M m="b(T)=0" />:
                 <D m="\begin{aligned}b'(t) &+ \tfrac{1}{\gamma}(\eta_t+A(t))\Sigma\,b(t)\\&+ \tfrac{1-\gamma}{\gamma}(\eta_t+A(t))(\alpha_t - r_f\mathbf{1})\\&+ A(t)\!\left(\alpha_t - \tfrac{1}{2}\operatorname{diag}(\Sigma)\right) = 0\end{aligned}" />
               </div>
             </div>
@@ -514,14 +516,14 @@ S08.frags = 5
 // ─────────────────────────────────────────────────────────────────────────────
 function S08b({ frag }) {
   return (
-    <ContentSlide title="Theorem 2 &amp; Corollary — The Hedging Demand" stripe="var(--blue)">
+    <ContentSlide title="Theorem 2 &amp; Corollary: The Hedging Demand" stripe="var(--blue)">
       {/* ── Top row: math left, intuition right ── */}
       <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start', minWidth: 0 }}>
         {/* LEFT */}
         <div style={{ flex: '0 0 52%', display: 'flex', flexDirection: 'column', gap: 7, minWidth: 0 }}>
           <div style={{ border: '2px solid var(--green)', borderRadius: 6, overflow: 'hidden', margin: 0 }}>
             <div style={{ background: 'var(--green)', color: 'white', padding: '4px 14px', fontSize: '0.78em', fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase' }}>
-              Theorem 2 — Hedging Demand, Closed Form
+              Theorem 2: Hedging Demand, Closed Form
             </div>
             <div style={{ background: '#F0FDF4', padding: '8px 14px', fontSize: '0.86em' }}>
               <D m="\frac{1}{\gamma}\bigl(A(t)x + b(t)\bigr) = \frac{M(t)}{\gamma}\,\Sigma^{-1}\!\bigl(\tilde\mu(t,x,y) - r_f\mathbf{1}\bigr)" />
@@ -542,8 +544,8 @@ function S08b({ frag }) {
               <div className="thm-lbl">Why does hedging amplify?</div>
               <div className="thm-body" style={{ fontSize: '0.84em' }}>
                 <ul style={{ margin: '4px 0 0 0', paddingLeft: 18, lineHeight: 1.7 }}>
-                  <li>Views shift <M m="\tilde\mu(t,x,y)" /> — they <strong>change what you invest in</strong>. The hedge opens <strong>no new position</strong>: it <strong>amplifies</strong> the view-adjusted MV bet.</li>
-                  <li>The bridge pulls <M m="X^y(t)" /> toward <M m="y" /> — <strong>high returns now</strong> mean <strong>higher <M m="\tilde\mu" /> later</strong>. Holding more <em>today</em> pre-loads the position your future self will want.</li>
+                  <li>Views shift <M m="\tilde\mu(t,x,y)" />; they <strong>change what you invest in</strong>. The hedge opens <strong>no new position</strong>: it <strong>amplifies</strong> the view-adjusted MV bet.</li>
+                  <li>The bridge pulls <M m="X^y(t)" /> toward <M m="y" />; <strong>high returns now</strong> mean <strong>higher <M m="\tilde\mu" /> later</strong>. Holding more <em>today</em> pre-loads the position your future self will want.</li>
                   <li><strong>Stronger views</strong> (smaller <M m="\Omega" />) → <strong>larger <M m="M(t)" /></strong> → <strong>more amplification</strong>. Vanishes at <M m="T" /> as views expire.</li>
                 </ul>
               </div>
@@ -556,7 +558,7 @@ function S08b({ frag }) {
         <div style={{ marginTop: 12, display: 'flex', justifyContent: 'center' }}>
           <div style={{ minWidth: '72%', maxWidth: '90%', border: '2px solid var(--navy)', borderRadius: 6, overflow: 'hidden' }}>
             <div style={{ background: 'var(--navy)', color: 'white', padding: '4px 14px', fontSize: '0.78em', fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase' }}>
-              Corollary — Closed-Form Optimal Policy
+              Corollary: Closed-Form Optimal Policy
             </div>
             <div style={{ background: '#F8FAFF', padding: '10px 16px', fontSize: '0.84em', textAlign: 'center' }}>
               <D m="\pi^*(t,x) = \underbrace{\frac{1}{\gamma}\Sigma^{-1}\!\bigl(\tilde\mu(t,x,y){-}r_f\mathbf{1}\bigr)}_{\text{MV}} + \underbrace{\frac{M(t)}{\gamma}\Sigma^{-1}\!\bigl(\tilde\mu(t,x,y){-}r_f\mathbf{1}\bigr)}_{\text{hedging}} = \frac{1+M(t)}{\gamma}\,\Sigma^{-1}\!\bigl(\tilde\mu(t,x,y){-}r_f\mathbf{1}\bigr)" />
@@ -574,7 +576,7 @@ S08b.frags = 2
 // ─────────────────────────────────────────────────────────────────────────────
 function S09({ frag }) {
   return (
-    <ContentSlide title="DBL Dominates — At Every Frequency, With Less Trading" stripe="var(--blue)">
+    <ContentSlide title="DBL Dominates: At Every Frequency, With Less Trading" stripe="var(--blue)">
       {/* Setup strip */}
       <div style={{ fontSize: '0.70em', color: '#666', marginBottom: 5 }}>
         Monte Carlo · 5 assets (S&amp;P/ASX 50) · 3 views · <M m="T=1\text{ yr}" /> · DBL vs. RCBL · continuous / daily / weekly · <M m="\alpha=0.4" /> (precise views)
@@ -603,7 +605,7 @@ function S09({ frag }) {
           opacity: frag >= 2 ? 1 : 0,
           transition: 'flex 0.4s ease, opacity 0.3s ease'
         }}>
-          <div style={{ fontSize: '0.70em', fontWeight: 700, color: 'var(--green)', marginBottom: 3, whiteSpace: 'nowrap' }}>Turnover — DBL</div>
+          <div style={{ fontSize: '0.70em', fontWeight: 700, color: 'var(--green)', marginBottom: 3, whiteSpace: 'nowrap' }}>Turnover: DBL</div>
           <div style={{ flex: 1, background: '#F0FDF4', border: '1px solid var(--green)', borderRadius: 4, padding: 4, minHeight: 0 }}>
             <img src="figures/turnover_0.4_DBL-1.png" alt="Turnover DBL"
               style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
@@ -618,7 +620,7 @@ function S09({ frag }) {
           transition: 'flex 0.4s ease, opacity 0.3s ease'
         }}>
           <div style={{ fontSize: '0.70em', fontWeight: 700, color: 'var(--red)', marginBottom: 3, whiteSpace: 'nowrap' }}>
-            Turnover — RCBL <span style={{ fontWeight: 400, color: '#888' }}>(y-axis capped)</span>
+            Turnover: RCBL <span style={{ fontWeight: 400, color: '#888' }}>(y-axis capped)</span>
           </div>
           <div style={{ flex: 1, background: '#FEF2F2', border: '1px solid var(--red)', borderRadius: 4, padding: 4, minHeight: 0 }}>
             <img src="figures/turnover_0.4_CBL-1.png" alt="Turnover RCBL"
@@ -638,7 +640,7 @@ function S09({ frag }) {
           transition: 'opacity 0.25s ease', pointerEvents: 'none'
         }}>
           <span className="bold c-green">Frontier: </span>DBL dominates RCBL at <em>all</em> rebalancing frequencies.
-          Performance gap is largest when views are precise (<M m="\alpha=0.4" />) — RCBL degrades sharply as rebalancing thins because it does not hedge changes in <M m="X^y(t)" />
+          Performance gap is largest when views are precise (<M m="\alpha=0.4" />); RCBL degrades sharply as rebalancing thins because it does not hedge changes in <M m="X^y(t)" />
         </div>
         {/* Turnover comment — visible frag 3 */}
         <div style={{
@@ -649,7 +651,7 @@ function S09({ frag }) {
           transition: 'opacity 0.25s ease', pointerEvents: 'none'
         }}>
           <span className="bold c-red">Turnover: </span>DBL has lower trading volume across all risk-aversion levels.
-          RCBL makes large reactive adjustments at each epoch — the y-axis is capped to be readable; the actual gap is even larger
+          RCBL makes large reactive adjustments at each epoch; the y-axis is capped to be readable; the actual gap is even larger
         </div>
       </div>
     </ContentSlide>
@@ -725,28 +727,28 @@ function S10({ frag }) {
           <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 12, flex: 1, fontSize: '0.86em', lineHeight: 1.6 }}>
             <Frag at={1} frag={frag}>
               <li>
-                We give a <strong>framework to embed forward-looking views</strong> into continuous-time portfolio models — allowing <strong>mismatched horizons</strong> between the view and the investment period
+                We give a <strong>framework to embed forward-looking views</strong> into continuous-time portfolio models, allowing <strong>mismatched horizons</strong> between the view and the investment period
               </li>
             </Frag>
             <Frag at={2} frag={frag}>
               <li>
-                We show the conditioned price process is always a <strong>Generalized Brownian Bridge</strong> — even when views are noisy. View noise simply <strong>extends the effective horizon</strong> to <M m="\tilde{T} = T + \omega^2/\sigma^2" />
+                We show the conditioned price process is always a <strong>Generalized Brownian Bridge</strong>, even when views are noisy. View noise simply <strong>extends the effective horizon</strong> to <M m="\tilde{T} = T + \omega^2/\sigma^2" />
               </li>
             </Frag>
             <Frag at={3} frag={frag}>
               <li>
-                We solve the portfolio problem in <strong>closed form</strong> — the hedging demand <strong>amplifies</strong> the view-adjusted MV bet proportionally to the view conviction factor <M m="M(t)" />
+                We solve the portfolio problem in <strong>closed form</strong>; the hedging demand <strong>amplifies</strong> the view-adjusted MV bet proportionally to the view conviction factor <M m="M(t)" />
               </li>
             </Frag>
             <Frag at={4} frag={frag}>
               <li>
-                Empirically, DBL <strong>strictly dominates</strong> the rebalanced classical BL strategy at every frequency — with <strong>lower turnover</strong>, and graceful degradation as views become uninformative
+                Empirically, DBL <strong>strictly dominates</strong> the rebalanced classical BL strategy at every frequency, with <strong>lower turnover</strong>, and graceful degradation as views become uninformative
               </li>
             </Frag>
           </ul>
 
           <Frag at={4} frag={frag}>
-            <Insight style={{ marginTop: 6 }}>DBL is tractable — and it outperforms.</Insight>
+            <Insight style={{ marginTop: 6 }}>DBL is tractable; it outperforms.</Insight>
           </Frag>
         </div>
       </div>
@@ -768,7 +770,7 @@ function S11() {
       sub={
         <span>
           Part I gave us a framework for incorporating views into dynamic models.
-          But outcomes don't move in isolation —{' '}
+          But outcomes don't move in isolation;{' '}
           they're shaped by an economic context the practitioner can observe and forecast.{' '}
           In Part II,{' '}
           <span style={{ color: '#F6C94E', fontWeight: 700 }}>views target future covariates</span>
@@ -790,7 +792,7 @@ function S12({ frag }) {
 
       {/* Motivation — always visible */}
       <div style={{ borderLeft: '3px solid var(--gold)', paddingLeft: 14, marginBottom: 10, fontSize: '0.88em', lineHeight: 1.65, color: '#222' }}>
-        In many decision problems, an <strong style={{ color: 'var(--navy)' }}>evolving context</strong> shapes how outcomes behave —
+        In many decision problems, an <strong style={{ color: 'var(--navy)' }}>evolving context</strong> shapes how outcomes behave;
         and the decision-maker's <strong style={{ color: 'var(--gold)' }}>views target that context directly</strong>:
         <div style={{ display: 'flex', gap: 22, marginTop: 7 }}>
           <span>📈 <strong>Portfolio:</strong> macro factors (GDP, spreads) drive returns; analyst forecasts future factor levels</span>
@@ -806,25 +808,25 @@ function S12({ frag }) {
         <div style={{ flex: '0 0 42%', opacity: frag >= 1 ? 1 : 0, transition: 'opacity 0.3s ease' }}>
           <div style={{ border: '1.5px solid var(--border)', borderRadius: 6, overflow: 'hidden' }}>
             <div style={{ background: '#F3F4F6', padding: '5px 13px', fontSize: '0.74em', fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', color: '#444' }}>
-              The Model — Three Objects
+              The Model: Three Objects
             </div>
             <div style={{ padding: '8px 13px', fontSize: '0.83em', lineHeight: 1.6 }}>
               <div style={{ marginBottom: 6 }}>
                 <span style={{ color: 'var(--navy)', fontWeight: 700 }}>Covariates</span>
-                <span style={{ color: '#888', fontSize: '0.85em' }}> — <M m="d" /> factors, <M m="X(t)\in\mathbb{R}^d" /></span>
+                <span style={{ color: '#888', fontSize: '0.85em' }}>: <M m="d" /> factors, <M m="X(t)\in\mathbb{R}^d" /></span>
                 <D m="dX(t) = \Theta(\mu - X(t))\,dt + L^X\,dW^X(t)" />
               </div>
               <div style={{ marginBottom: 6 }}>
                 <span style={{ color: 'var(--green)', fontWeight: 700 }}>Returns</span>
-                <span style={{ color: '#888', fontSize: '0.85em' }}> — <M m="N" /> assets, <M m="\beta\in\mathbb{R}^{N\times d}" /></span>
+                <span style={{ color: '#888', fontSize: '0.85em' }}>: <M m="N" /> assets, <M m="\beta\in\mathbb{R}^{N\times d}" /></span>
                 <D m="dR(t) = \bigl(\alpha + \beta X(t)\bigr)dt + L^S\,dW(t)" />
                 <div style={{ fontSize: '0.84em', color: '#666', marginTop: -2 }}>
-                  <M m="\Sigma^{S,X} = L^S(L^X)^\top \neq 0" /> — factor-return correlation
+                  <M m="\Sigma^{S,X} = L^S(L^X)^\top \neq 0" /> (factor-return correlation)
                 </div>
               </div>
               <div>
                 <span style={{ color: 'var(--gold)', fontWeight: 700 }}>Views</span>
-                <span style={{ color: '#888', fontSize: '0.85em' }}> — <M m="K" /> views, <M m="P\in\mathbb{R}^{K\times d}" /></span>
+                <span style={{ color: '#888', fontSize: '0.85em' }}>: <M m="K" /> views, <M m="P\in\mathbb{R}^{K\times d}" /></span>
                 <D m="Y = PX(T) + \varepsilon,\quad \varepsilon \sim \mathcal{N}(0,\Omega)" />
                 <div style={{ fontSize: '0.84em', color: '#666', marginTop: -2 }}>
                   Conditioning on <M m="Y=y" /> is the operation this paper studies.
@@ -840,10 +842,10 @@ function S12({ frag }) {
           <div style={{ opacity: frag >= 2 ? 1 : 0, transition: 'opacity 0.3s ease' }}>
             <div style={{ border: '2px solid var(--navy)', borderRadius: 6, overflow: 'hidden' }}>
               <div style={{ background: 'var(--navy)', color: 'white', padding: '5px 13px', fontSize: '0.74em', fontWeight: 700, letterSpacing: '.05em', textTransform: 'uppercase' }}>
-                Effect 1 — Covariate Dynamics Transform
+                Effect 1: Covariate Dynamics Transform
               </div>
               <div style={{ padding: '10px 14px', fontSize: '0.87em', lineHeight: 1.65, background: '#F8FAFF' }}>
-                Given views, <M m="X^y(t) = X(t)\mid Y" /> becomes a <strong>mean-reverting bridge</strong> — the view distorts both the <strong>reversion speed</strong> <M m="\tilde\Theta(t)" /> and the <strong>long-run level</strong> <M m="\tilde\mu(t,y)" />.
+                Given views, <M m="X^y(t) = X(t)\mid Y" /> becomes a <strong>mean-reverting bridge</strong>; the view distorts both the <strong>reversion speed</strong> <M m="\tilde\Theta(t)" /> and the <strong>long-run level</strong> <M m="\tilde\mu(t,y)" />.
               </div>
             </div>
           </div>
@@ -851,11 +853,11 @@ function S12({ frag }) {
           <div style={{ opacity: frag >= 3 ? 1 : 0, transition: 'opacity 0.3s ease' }}>
             <div style={{ border: '2px solid var(--gold)', borderRadius: 6, overflow: 'hidden' }}>
               <div style={{ background: 'var(--gold)', color: 'white', padding: '5px 13px', fontSize: '0.74em', fontWeight: 700, letterSpacing: '.05em', textTransform: 'uppercase' }}>
-                Effect 2 — Return Predictions Deform
+                Effect 2: Return Predictions Deform
               </div>
               <div style={{ padding: '10px 14px', fontSize: '0.87em', lineHeight: 1.65, background: '#FFFBEB' }}>
-                Both the <strong>intercept</strong> <M m="\tilde\alpha(t,y)" /> and the <strong>slope</strong> <M m="\tilde\beta(t)" /> of expected returns become time-varying — views change <strong>how context is used</strong> to predict future outcomes.
-                <span style={{ display: 'block', marginTop: 5, color: '#555', fontSize: '0.90em' }}>This only arises when factors and returns are correlated — invisible in the asset-returns-only case.</span>
+                Both the <strong>intercept</strong> <M m="\tilde\alpha(t,y)" /> and the <strong>slope</strong> <M m="\tilde\beta(t)" /> of expected returns become time-varying; views change <strong>how context is used</strong> to predict future outcomes.
+                <span style={{ display: 'block', marginTop: 5, color: '#555', fontSize: '0.90em' }}>This only arises when factors and returns are correlated; invisible in the asset-returns-only case.</span>
               </div>
             </div>
           </div>
@@ -882,7 +884,7 @@ function S13({ frag }) {
         <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
           <Frag at={0} frag={frag}>
             <div className="thm" style={{ marginBottom: 8 }}>
-              <div className="thm-lbl">Proposition — Posterior Factor SDE (MrB)</div>
+              <div className="thm-lbl">Proposition: Posterior Factor SDE (MrB)</div>
               <div className="thm-body">
                 Under <M m="\mathbb{Q} = \mathbb{P}(\cdot\mid Y=y)" />, the conditional factor process satisfies:
                 <D m="dX^y(t) = \tilde\Theta(t)\bigl(\tilde\mu(t,y) - X^y(t)\bigr)\,dt + L^X\,dW^\mathbb{Q}(t)" />
@@ -924,19 +926,19 @@ function S13({ frag }) {
         <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
           <Frag at={5} frag={frag}>
             <div className="thm navy" style={{ marginBottom: 10 }}>
-              <div className="thm-lbl">Theorem — Conditional Return SDE</div>
+              <div className="thm-lbl">Theorem: Conditional Return SDE</div>
               <div className="thm-body">
                 Under <M m="\mathbb{Q}" />, asset returns follow:
                 <D m="dR^y(t) = \Bigl(\tilde\alpha(t,y) + \tilde\beta(t)\,X^y(t)\Bigr)dt + L^S\,dW^\mathbb{Q}(t)" />
                 <div style={{ fontSize: '0.82em', color: '#555', marginTop: 2 }}>
-                  <M m="\tilde\beta(t) = \beta - L^S\eta(t)Pe^{-\Theta(T-t)}" /> — view tilts factor loadings; collapses to <M m="\beta" /> at <M m="t=T" />
+                  <M m="\tilde\beta(t) = \beta - L^S\eta(t)Pe^{-\Theta(T-t)}" />: view tilts factor loadings; collapses to <M m="\beta" /> at <M m="t=T" />
                 </div>
               </div>
             </div>
           </Frag>
           <Frag at={6} frag={frag}>
             <div style={{ fontSize: '0.88em', fontStyle: 'italic', color: '#555', padding: '5px 10px', borderLeft: '3px solid var(--gold)', marginBottom: 8 }}>
-              Views about future covariates <M m="X(T)" /> change how current covariates <M m="X(t)" /> are used to predict returns — the same factor, a different loading.
+              Views about future covariates <M m="X(T)" /> change how current covariates <M m="X(t)" /> are used to predict returns; the same factor, a different loading.
             </div>
           </Frag>
           <Frag at={7} frag={frag}>
@@ -980,7 +982,7 @@ function S14({ frag }) {
               <div className="thm-body">
                 The optimal portfolio under factor views (Theorem):
                 <D m="\pi^*(t) = \underbrace{\frac{1}{\gamma}(\Sigma^S)^{-1}\bigl(\tilde\alpha(t,y) + \tilde\beta(t)X^y(t) - r_f\mathbf{1}\bigr)}_{\text{MV term with view-adjusted drift}} + \underbrace{\frac{1}{\gamma}\bigl(A(t)X^y(t)+b(t)\bigr)}_{\text{hedging demand}}" />
-                <span className="xs c-muted"><M m="A(t)" /> solves a Riccati ODE; <M m="b(t)" /> a linear ODE — both in closed form</span>
+                <span className="xs c-muted"><M m="A(t)" /> solves a Riccati ODE; <M m="b(t)" /> a linear ODE, both in closed form</span>
               </div>
             </div>
           </Frag>
@@ -988,9 +990,9 @@ function S14({ frag }) {
             <div className="thm gold" style={{ marginBottom: 8 }}>
               <div className="thm-lbl gold">What Changes vs. No Views</div>
               <div className="thm-body">
-                Without views: <M m="\tilde\beta(t) = \beta" />, <M m="A(t)=0" /> — standard factor model portfolio
+                Without views: <M m="\tilde\beta(t) = \beta" />, <M m="A(t)=0" />: standard factor model portfolio
                 <br /><br />
-                With factor views: <M m="\tilde\beta(t) = \beta - L^S\eta(t)Pe^{-\Theta(T-t)}" /> becomes time-varying — portfolio tilt adjusts as view horizon approaches
+                With factor views: <M m="\tilde\beta(t) = \beta - L^S\eta(t)Pe^{-\Theta(T-t)}" /> becomes time-varying; portfolio tilt adjusts as view horizon approaches
                 <br /><br />
                 When <M m="\Sigma^{S,X}=0" /> (no factor-return correlation), views affect factor paths but leave <M m="\tilde\beta(t)=\beta" /> unchanged
               </div>
@@ -1006,7 +1008,7 @@ function S14({ frag }) {
                 <br /><br />
                 • <strong>+11% Sharpe</strong> vs. factor model without views
                 <br />
-                • <strong>Outperforms DBL</strong> when factors are persistent — OU mean reversion adds structure that GBM misses
+                • <strong>Outperforms DBL</strong> when factors are persistent; OU mean reversion adds structure that GBM misses
                 <br />
                 • <strong>Robustness:</strong> performance degrades gracefully as factor views become noisier
               </div>
@@ -1019,17 +1021,17 @@ function S14({ frag }) {
                 <div className="two-col" style={{ gap: 8 }}>
                   <div>
                     <span className="c-blue bold">DBL (Part I):</span><br />
-                    — GBM log-returns <M m="X(t)" /><br />
-                    — Views <M m="Y=PX(T)+\sqrt{T}\varepsilon" /><br />
-                    — Effective horizon <M m="\tilde{T}_i=1/H_{ii}" /><br />
-                    — Brownian bridge structure
+                    · GBM log-returns <M m="X(t)" /><br />
+                    · Views <M m="Y=PX(T)+\sqrt{T}\varepsilon" /><br />
+                    · Effective horizon <M m="\tilde{T}_i=1/H_{ii}" /><br />
+                    · Brownian bridge structure
                   </div>
                   <div>
                     <span className="c-gold bold">Factor Model (Part II):</span><br />
-                    — OU factors <M m="dX=\Theta(\mu-X)dt+L^X dW" /><br />
-                    — Views <M m="Y=PX(T)+\varepsilon" /><br />
-                    — Effective horizon <M m="\tilde{T}=T+\delta" /><br />
-                    — Time-varying <M m="\tilde\Theta(t),\,\tilde\beta(t)" />
+                    · OU factors <M m="dX=\Theta(\mu-X)dt+L^X dW" /><br />
+                    · Views <M m="Y=PX(T)+\varepsilon" /><br />
+                    · Effective horizon <M m="\tilde{T}=T+\delta" /><br />
+                    · Time-varying <M m="\tilde\Theta(t),\,\tilde\beta(t)" />
                   </div>
                 </div>
               </div>
@@ -1053,7 +1055,7 @@ function S14b({ frag }) {
         {/* Optimal portfolio formula */}
         <Frag at={0} frag={frag}>
           <div className="thm" style={{ marginBottom: 0 }}>
-            <div className="thm-lbl">Theorem — Optimal Portfolio under Factor Views</div>
+            <div className="thm-lbl">Theorem: Optimal Portfolio under Factor Views</div>
             <div className="thm-body">
               <D m="\pi^*(t) = \underbrace{\frac{1}{\gamma}(\Sigma^S)^{-1}\bigl(\tilde\alpha(t,y) + \tilde\beta(t)\,X^y(t) - r_f\mathbf{1}\bigr)}_{\text{(1) MV term}} \;+\; \underbrace{\frac{1}{\gamma}\bigl(A(t)\,X^y(t)+b(t)\bigr)}_{\text{(2) Hedging demand}}" />
             </div>
@@ -1065,11 +1067,11 @@ function S14b({ frag }) {
           <div style={{ display: 'flex', gap: 10 }}>
             <div style={{ flex: 1, padding: '8px 12px', borderLeft: '3px solid var(--navy)', background: '#f5f7ff', borderRadius: 3, fontSize: '0.87em' }}>
               <div style={{ fontWeight: 700, color: 'var(--navy)', marginBottom: 4 }}>(1) MV term</div>
-              Views change <M m="\tilde\alpha(t,y)" /> and <M m="\tilde\beta(t) = \beta - L^S\eta(t)Pe^{-\Theta(T-t)}" /> — the loading on <M m="X^y(t)" /> is no longer <M m="\beta" />.
+              Views change <M m="\tilde\alpha(t,y)" /> and <M m="\tilde\beta(t) = \beta - L^S\eta(t)Pe^{-\Theta(T-t)}" />: the loading on <M m="X^y(t)" /> is no longer <M m="\beta" />.
             </div>
             <div style={{ flex: 1, padding: '8px 12px', borderLeft: '3px solid var(--gold)', background: '#fffbeb', borderRadius: 3, fontSize: '0.87em' }}>
               <div style={{ fontWeight: 700, color: '#92610a', marginBottom: 4 }}>(2) Hedging demand</div>
-              <M m="A(t)" /> and <M m="b(t)" /> hedge investment opportunity set risk. Their ODEs also depend on <M m="\tilde\beta(t)" /> and <M m="\tilde\Theta(t)" /> — views enter here too.
+              <M m="A(t)" /> and <M m="b(t)" /> hedge investment opportunity set risk. Their ODEs also depend on <M m="\tilde\beta(t)" /> and <M m="\tilde\Theta(t)" />: views enter here too.
             </div>
           </div>
         </Frag>
@@ -1077,18 +1079,18 @@ function S14b({ frag }) {
         {/* ODEs */}
         <Frag at={2} frag={frag}>
           <div className="thm gold" style={{ marginTop: 2 }}>
-            <div className="thm-lbl gold"><M m="A(t)" /> and <M m="b(t)" /> — ODE System (backward, <M m="A(T)=b(T)=0" />)</div>
+            <div className="thm-lbl gold"><M m="A(t)" /> and <M m="b(t)" />: ODE System (backward, <M m="A(T)=b(T)=0" />)</div>
             <div className="thm-body" style={{ fontSize: '0.78em' }}>
               <div className="two-col" style={{ gap: 14 }}>
                 <div>
-                  <span style={{ fontWeight: 600 }}><M m="A(t)" /> — matrix Riccati:</span>
+                  <span style={{ fontWeight: 600 }}><M m="A(t)" />: matrix Riccati:</span>
                   <D m={`A'(t) + \\tfrac{1-\\gamma}{\\gamma}\\tilde\\beta(t)^\\top(\\Sigma^S)^{-1}\\tilde\\beta(t) \\\\
                     + A(t)\\!\\left(\\Sigma^X + \\tfrac{1-\\gamma}{\\gamma}(\\Sigma^{S,X})^\\top(\\Sigma^S)^{-1}\\Sigma^{S,X}\\right)\\!A(t) \\\\
                     + A(t)\\!\\left(\\tfrac{1-\\gamma}{\\gamma}(\\Sigma^{S,X})^\\top(\\Sigma^S)^{-1}\\tilde\\beta(t) - \\tilde\\Theta(t)\\right) \\\\
                     + \\left(\\cdots\\right)^\\top\\! A(t) = 0`} />
                 </div>
                 <div>
-                  <span style={{ fontWeight: 600 }}><M m="b(t)" /> — linear ODE:</span>
+                  <span style={{ fontWeight: 600 }}><M m="b(t)" />: linear ODE:</span>
                   <D m={`b'(t) + \\tfrac{1-\\gamma}{\\gamma}\\!\\left(\\tilde\\beta(t)^\\top + A(t)(\\Sigma^{S,X})^\\top\\right)\\!(\\Sigma^S)^{-1} \\\\
                     \\cdot\\!\\left(\\Sigma^{S,X}b(t) + \\tilde\\alpha(t,y) - r_f\\mathbf{1}_N\\right) \\\\
                     + \\left(A(t)\\Sigma^X - \\tilde\\Theta(t)^\\top\\right)\\!b(t) \\\\
@@ -1096,7 +1098,7 @@ function S14b({ frag }) {
                 </div>
               </div>
               <div style={{ color: '#888', fontSize: '0.9em', marginTop: 6 }}>
-                Both driven by <M m="\tilde\beta(t)" /> and <M m="\tilde\Theta(t)" /> — views enter both channels; impact on hedging not transparent from ODEs alone.
+                Both driven by <M m="\tilde\beta(t)" /> and <M m="\tilde\Theta(t)" />: views enter both channels; impact on hedging not transparent from ODEs alone.
               </div>
             </div>
           </div>
@@ -1105,8 +1107,9 @@ function S14b({ frag }) {
         {/* Simplification callout */}
         <Frag at={3} frag={frag}>
           <div style={{ borderLeft: '3px solid var(--gold)', padding: '7px 12px', fontStyle: 'italic', fontSize: '0.88em', color: '#555' }}>
-            <strong style={{ fontStyle: 'normal', color: 'var(--navy)' }}>Simplification (Theorem 5.2):</strong> The investor solves the same Riccati system as if there were no views — with constant coefficients <M m="(\beta,\Theta)" />.
+            <strong style={{ fontStyle: 'normal', color: 'var(--navy)' }}>Simplification (Theorem 5.2):</strong> The investor solves the same Riccati system as if there were no views, with constant coefficients <M m="(\beta,\Theta)" />.
             The beliefs <M m="(y,\Omega)" /> appear only in the terminal conditions: <M m="A_1(T) = -P^\top\Omega^{-1}P" /> and <M m="b_1(T) = P^\top\Omega^{-1}y" />.
+
           </div>
         </Frag>
 
@@ -1163,7 +1166,7 @@ function S14c({ frag }) {
             opacity: frag >= 1 ? 1 : 0, transition: 'opacity 0.4s',
           }}>
             <div style={{ fontSize: '0.83em', fontWeight: 600, color: 'var(--navy)' }}>
-              Loading misspecification (<M m="\hat\beta=(1+\varepsilon_\beta)\beta" />) — VOI
+              Loading misspecification (<M m="\hat\beta=(1+\varepsilon_\beta)\beta" />): VOI
             </div>
             <div style={{ flex: 1, minHeight: 0, border: '1px solid var(--border)', borderRadius: 4, overflow: 'hidden', background: '#fafafa' }}>
               <img src="figures/robustness_beta.png" alt="Beta misspecification VOI"
@@ -1180,7 +1183,7 @@ function S14c({ frag }) {
             opacity: frag >= 3 ? 1 : 0, transition: 'opacity 0.4s',
           }}>
             <div style={{ fontSize: '0.83em', fontWeight: 600, color: 'var(--navy)' }}>
-              Precision misspecification (<M m="\hat\kappa=(1+\varepsilon_\kappa)\kappa" />) — VOI
+              Precision misspecification (<M m="\hat\kappa=(1+\varepsilon_\kappa)\kappa" />): VOI
             </div>
             <div style={{ flex: 1, minHeight: 0, border: '1px solid var(--border)', borderRadius: 4, overflow: 'hidden', background: '#fafafa' }}>
               <img src="figures/robustness_Omega.png" alt="Precision misspecification VOI"
@@ -1198,7 +1201,7 @@ function S14c({ frag }) {
           background: '#fffbeb', borderRadius: 3, fontSize: '0.88em', color: '#444',
           opacity: frag >= 4 ? 1 : 0, transition: 'opacity 0.4s',
         }}>
-          Views remain valuable under misspecification — VOI stays positive across all <M m="\beta" /> errors,
+          Views remain valuable under misspecification; VOI stays positive across all <M m="\beta" /> errors,
           and is highest when <M m="\beta" /> is <em>underestimated</em>.
           Precision is different: underestimating is safe, but overconfidence causes investors to overreact to noise
           and VOI turns <strong style={{ color: 'var(--red)' }}>negative</strong>.
@@ -1215,7 +1218,7 @@ S14c.frags = 4
 // ─────────────────────────────────────────────────────────────────────────────
 function S15({ frag }) {
   return (
-    <ContentSlide title="Part II — Summary" stripe="var(--gold)">
+    <ContentSlide title="Part II: Summary" stripe="var(--gold)">
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16, flex: 1, justifyContent: 'center' }}>
 
         {/* Setup — always visible */}
@@ -1225,7 +1228,7 @@ function S15({ frag }) {
         <div style={{ display: 'flex', gap: 14 }}>
           <div style={{ flex: 1, opacity: frag >= 1 ? 1 : 0, transition: 'opacity 0.4s' }}>
             <Thm color="gold" label="① Change covariate prediction">
-              Conditioning on the view pins the OU process — factors bridge toward the view target
+              Conditioning on the view pins the OU process; factors bridge toward the view target
               rather than the unconditional mean. The effective horizon <M m="\widetilde T > T" /> measures
               how valuable the view is.
             </Thm>
@@ -1281,7 +1284,7 @@ function S16() {
       eyebrow="PART III"
       eyebrowSize="1.1em"
       title="When Worst-Case Isn't Robust: DRO and the Secretary Problem"
-      sub="Sequential stopping hinges on an exploration-exploitation tradeoff: stop now, or keep searching. Under model misspecification, does a robust decision-maker explore more — or less? We show it is neither: worst-case optimization leaves the stopping rule unchanged, and genuine robustness requires redesigning the process itself."
+      sub="Sequential stopping hinges on an exploration-exploitation tradeoff: stop now, or keep searching. Under model misspecification, does a robust decision-maker explore more, or less? We show it is neither: worst-case optimization leaves the stopping rule unchanged, and genuine robustness requires redesigning the process itself."
       footer="Abdelhakmi & Lim (Working paper) · When Worst-Case Isn't Robust: On the Limitations of Distributionally Robust Formulations in Secretary Problems"
     />
   )
@@ -1301,7 +1304,7 @@ function S17({ frag }) {
           <div className="thm">
             <div className="thm-lbl">The Setting</div>
             <div className="thm-body" style={{ fontSize: '.88em' }}>
-              <M m="N" /> items arrive sequentially. At each step, observe the item's <em>relative rank</em> among those seen. <strong>Accept or reject immediately — no recall.</strong>
+              <M m="N" /> items arrive sequentially. At each step, observe the item's <em>relative rank</em> among those seen. <strong>Accept or reject immediately, no recall.</strong>
               <br /><br />
               <strong>Objective:</strong> select the single best item.
             </div>
@@ -1319,7 +1322,7 @@ function S17({ frag }) {
         <Frag at={1} frag={frag}>
           <div style={{ background: '#fafafa', border: '1px solid #e4e8f0', borderRadius: 6, padding: '7px 12px' }}>
             <div style={{ fontSize: '0.68em', fontWeight: 700, color: '#c8830a', textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: 5 }}>
-              Applications — canonical across OR/OM and CS
+              Applications: canonical across OR/OM and CS
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '3px 14px', fontSize: '.76em', color: '#444' }}>
               <div style={{ color: '#888', fontSize: '.8em', fontWeight: 700, textTransform: 'uppercase', paddingBottom: 2 }}>Operations Management</div>
@@ -1335,7 +1338,7 @@ function S17({ frag }) {
         {/* Row 3: Results — prominent, revealed one by one */}
         <Frag at={2} frag={frag}>
           <div style={{ fontSize: '0.82em', fontWeight: 800, color: 'var(--navy)', textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: 6, marginBottom: 7, paddingLeft: 10, borderLeft: '4px solid var(--red)' }}>
-            This paper — Secretary Problems under model misspecification
+            This paper: Secretary Problems under model misspecification
           </div>
         </Frag>
         <div className="two-col" style={{ gap: 12 }}>
@@ -1432,7 +1435,7 @@ function S18({ frag }) {
             </div>
             <div style={{ fontSize: '0.79em', color: 'var(--text)', lineHeight: 1.5, marginBottom: 6 }}>
               N items with values X<sub>1</sub>,&#x2026;,X<sub>N</sub> drawn from joint distribution <strong><M m="\mathbb{P}" /></strong>.
-              At each period observe information <M m="\mathcal{F}_n" />, accept or reject &#x2014; <strong>no recall</strong>.
+              At each period observe information <M m="\mathcal{F}_n" />, accept or reject, <strong>no recall</strong>.
             </div>
             <D m="\max_{\tau}\;\mathbb{E}_{\mathbb{P}}[r_\tau] \;=\; \max_{\tau}\;\mathbb{P}[r_\tau = 1], \qquad r_n = \mathbf{1}\!\Bigl(X_n = \max_{1 \le i \le N} X_i\Bigr)" />
             <div style={{ fontSize: '0.68em', color: 'var(--muted)', marginTop: 2, paddingLeft: 14, lineHeight: 1.4 }}>
@@ -1442,7 +1445,7 @@ function S18({ frag }) {
           {/* Right: variants */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
             <div style={{ fontSize: '0.70em', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.10em', color: 'var(--navy)', marginBottom: 1 }}>
-              Variants &#x2014; differ in <M m="\mathbb{P}" /> and <M m="\mathcal{F}_n" />
+              Variants: differ in <M m="\mathbb{P}" /> and <M m="\mathcal{F}_n" />
             </div>
             <div style={{ background: 'white', border: '1px solid var(--border)', borderLeft: '3px solid var(--blue)', borderRadius: '0 4px 4px 0', padding: '4px 10px' }}>
               <div style={{ fontSize: '0.68em', fontWeight: 700, color: 'var(--blue)', marginBottom: 2 }}>Classical (Rank-Only)</div>
@@ -1464,7 +1467,7 @@ function S18({ frag }) {
           <div style={{ display: 'flex', gap: 11, alignItems: 'center' }}>
             <div style={{ flex: 1, background: 'rgba(192,57,43,0.04)', border: '1px solid rgba(192,57,43,0.18)', borderRadius: 4, padding: '7px 12px' }}>
               <div style={{ fontSize: '0.70em', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.10em', color: 'var(--red)', marginBottom: 4 }}>
-                DRO &#x2014; Penalized Formulation
+                DRO: Penalized Formulation
               </div>
               <D m="\max_{\tau}\;\inf_{\mathbb{Q}}\Bigl\{\,\mathbb{Q}[\text{success}]\;+\;\tfrac{1}{\eta}\,\mathcal{H}(\mathbb{Q}\,\|\,\mathbb{P})\,\Bigr\}" />
               <div style={{ display: 'flex', gap: 8, marginTop: 5 }}>
@@ -1481,12 +1484,12 @@ function S18({ frag }) {
                     &#x2191; Nature
                   </div>
                   <div style={{ fontSize: '0.71em', color: 'var(--text)', lineHeight: 1.35 }}>
-                    Chooses &#x211a; to <strong>minimize</strong> &#x2014; pays penalty <M m="\tfrac{1}{\eta}\mathcal{H}(\mathbb{Q}\|\mathbb{P})" />
+                    Chooses &#x211a; to <strong>minimize</strong>, pays penalty <M m="\tfrac{1}{\eta}\mathcal{H}(\mathbb{Q}\|\mathbb{P})" />
                   </div>
                 </div>
               </div>
               <div style={{ fontSize: '0.63em', color: 'var(--muted)', marginTop: 4 }}>
-                We use KL divergence &#x2014; results extend to general &#x3c6;-divergence (&#x3c7;&#xb2;, TV) and Wasserstein distance
+                We use KL divergence; results extend to general &#x3c6;-divergence (&#x3c7;&#xb2;, TV) and Wasserstein distance
               </div>
             </div>
             <UncertaintyBallSVG />
@@ -1499,7 +1502,7 @@ function S18({ frag }) {
             {/* Header */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 7 }}>
               <div style={{ fontSize: '0.70em', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.10em', color: 'var(--red)' }}>
-                Adversarial Game &#x2014; At Each Period n &#x2208; &#x7b;1,&#x2026;,N&#x7d;
+                Adversarial Game: At Each Period n &#x2208; &#x7b;1,&#x2026;,N&#x7d;
               </div>
               <div style={{ flex: 1, height: 1, background: 'rgba(192,57,43,0.25)' }} />
               <div style={{ fontSize: '0.62em', fontWeight: 700, color: 'var(--red)', background: 'rgba(192,57,43,0.12)', padding: '2px 7px', borderRadius: 3, textTransform: 'uppercase', letterSpacing: '0.06em', whiteSpace: 'nowrap' }}>
@@ -1514,10 +1517,10 @@ function S18({ frag }) {
               <Frag at={3} frag={frag}>
                 <div style={{ background: 'rgba(192,57,43,0.09)', border: '1px solid rgba(192,57,43,0.3)', borderRadius: 4, padding: '7px 10px', height: '100%' }}>
                   <div style={{ fontSize: '0.65em', fontWeight: 800, color: 'var(--red)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 4 }}>
-                    Exploit &#x2014; Choose Current Item
+                    Exploit: Choose Current Item
                   </div>
                   <div style={{ fontSize: '0.71em', color: 'var(--text)', lineHeight: 1.4 }}>
-                    Nature shows a <strong style={{ color: 'var(--blue)' }}>good future</strong> — making you regret stopping.
+                    Nature shows a <strong style={{ color: 'var(--blue)' }}>good future</strong>, making you regret stopping.
                   </div>
                 </div>
               </Frag>
@@ -1525,10 +1528,10 @@ function S18({ frag }) {
               <Frag at={4} frag={frag}>
                 <div style={{ background: 'rgba(27,47,94,0.07)', border: '1px solid rgba(27,47,94,0.25)', borderRadius: 4, padding: '7px 10px', height: '100%' }}>
                   <div style={{ fontSize: '0.65em', fontWeight: 800, color: 'var(--navy)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 4 }}>
-                    Explore &#x2014; Reject Current Item
+                    Explore: Reject Current Item
                   </div>
                   <div style={{ fontSize: '0.71em', color: 'var(--text)', lineHeight: 1.4 }}>
-                    Nature shows a <strong style={{ color: 'var(--red)' }}>bad future</strong> — making you regret not stopping.
+                    Nature shows a <strong style={{ color: 'var(--red)' }}>bad future</strong>, making you regret not stopping.
                   </div>
                 </div>
               </Frag>
@@ -1558,10 +1561,10 @@ function S19({ frag }) {
           textAlign: 'center',
         }}>
           <div style={{ fontSize: '0.95em', fontWeight: 800, color: 'var(--navy)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 10 }}>
-            Theorem — DRO Invariance
+            Theorem: DRO Invariance
           </div>
           <div style={{ fontSize: '0.78em', color: '#555', marginBottom: 10 }}>
-            For any <M m="\eta > 0" />, any variant — holds for both <M m="\phi" />-divergence and <M m="\ell_1" /> Wasserstein
+            For any <M m="\eta > 0" />, any variant; holds for both <M m="\phi" />-divergence and <M m="\ell_1" /> Wasserstein
           </div>
           <D m="\pi^*_{\mathrm{DRO}}(\eta) \;=\; \pi^*_{\mathrm{nominal}} \qquad \forall\,\eta > 0" />
           <div style={{ fontSize: '0.76em', color: '#555', marginTop: 8, fontStyle: 'italic' }}>
@@ -1747,7 +1750,7 @@ function S20({ frag }) {
         {/* Formula — always visible */}
         <div style={{ background: 'rgba(27,47,94,0.04)', border: '1px solid rgba(27,47,94,0.15)', borderRadius: 5, padding: '10px 16px', textAlign: 'center' }}>
           <div style={{ fontSize: '0.62em', fontWeight: 700, color: 'var(--navy)', textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: 6 }}>
-            Proposition 4.3 — DRO Expansion
+            Proposition 4.3: DRO Expansion
           </div>
           <D m="\sup_{\tau}\inf_{\mathbb{Q}}\!\left\{\mathbb{Q}[\text{success}]+\tfrac{1}{\eta}\mathcal{H}(\mathbb{Q}\|\mathbb{P})\right\} \;=_{\eta\to 0}\; \sup_{\tau}\,\mathbb{P}[\text{success}] - \tfrac{\eta}{2}\,\mathcal{S}_{\tau}^{\mathbb{P}} + o(\eta)" />
           {/* Sensitivity definition */}
@@ -1781,7 +1784,7 @@ function S20({ frag }) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10, paddingTop: 4 }}>
             <Frag at={4} frag={frag}>
               <div className="thm red">
-                <div className="thm-lbl red">Proposition 4.2 — Maximum Sensitivity</div>
+                <div className="thm-lbl red">Proposition 4.2: Maximum Sensitivity</div>
                 <div className="thm-body" style={{ fontWeight: 700, color: 'var(--red)', fontSize: '0.92em' }}>
                   Among all stopping policies, the 1/e rule has the highest worst-case sensitivity.
                 </div>
@@ -1929,7 +1932,7 @@ function S21({ frag }) {
 
           <Frag at={4} frag={frag}>
             <div className="insight">
-              DRO gets stuck at the 1/e rule — which has both the{' '}
+              DRO gets stuck at the 1/e rule, which has both the{' '}
               <span style={{ color: 'var(--blue)' }}>highest p</span>
               {' '}and the{' '}
               <span style={{ color: 'var(--red)' }}>highest 𝒮</span>
@@ -1956,21 +1959,21 @@ function S22({ frag }) {
         <div>
           <Frag at={1} frag={frag}>
             <div className="thm" style={{ marginBottom: 8 }}>
-              <div className="thm-lbl">Exploration Shocks — Definition</div>
+              <div className="thm-lbl">Exploration Shocks: Definition</div>
               <div className="thm-body">
                 Define the <strong>exploration shock</strong> at stage <M m="n" />:
                 <D m="\Xi_{n,\kappa} = \sum_{n'=n}^{N}\bigl(p_{n'+1,\kappa} - p_{n',\kappa}\bigr)^2" />
-                This is the <em>quadratic variation</em> of the success-probability process along the optimal path — how much the best-pick probability fluctuates during exploration.
+                This is the <em>quadratic variation</em> of the success-probability process along the optimal path: how much the best-pick probability fluctuates during exploration.
               </div>
             </div>
           </Frag>
           <Frag at={2} frag={frag}>
             <div className="thm red" style={{ marginBottom: 8 }}>
-              <div className="thm-lbl red">Theorem D — Frontier Curvature</div>
+              <div className="thm-lbl red">Theorem D: Frontier Curvature</div>
               <div className="thm-body">
                 The frontier is convex if and only if:
                 <D m="\mathbb{E}[\Xi_{n,\kappa}] \geq \mathbb{E}\!\left[\bigl(p_N - p_n\bigr)^2\right]" />
-                Secretary problems satisfy this condition — exploration shocks <em>dominate</em> terminal uncertainty.
+                Secretary problems satisfy this condition; exploration shocks <em>dominate</em> terminal uncertainty.
               </div>
             </div>
           </Frag>
@@ -1988,7 +1991,7 @@ function S22({ frag }) {
           </Frag>
           <Frag at={4} frag={frag}>
             <Insight>
-              Secretary problems are fragile not despite optimal stopping — but <em>because</em> of it. Exploration is the source of fragility.
+              Secretary problems are fragile not despite optimal stopping, but <em>because</em> of it. Exploration is the source of fragility.
             </Insight>
           </Frag>
         </div>
@@ -2132,7 +2135,7 @@ function S23({ frag }) {
               Why DRO Fails
             </div>
             <div style={{ fontSize: '0.88em', lineHeight: 1.5 }}>
-              The performance–sensitivity frontier is <strong>convex</strong> — a structural
+              The performance–sensitivity frontier is <strong>convex</strong>: a structural
               feature of the <strong>problem itself</strong> (binary reward), not of any particular policy.
             </div>
           </div>
@@ -2145,7 +2148,7 @@ function S23({ frag }) {
                 <div className="thm-body" style={{ fontSize: '0.85em' }}>
                   Let <M m="p_n = \mathbb{P}[\text{success}\mid\mathcal{F}_n]" />. Sensitivity to
                   misspecification arises because <strong>exploration alters the reward
-                  function</strong> — each new observation reshapes future payoffs.
+                  function</strong>; each new observation reshapes future payoffs.
                   The cumulative exploration shock:
                   <D m="\Xi_{n,\kappa}=\sum_{n'=n}^{N}\!\bigl(p_{n'+1,\kappa}-p_{n',\kappa}\bigr)^{2}" />
                 </div>
@@ -2163,10 +2166,10 @@ function S23({ frag }) {
             <Frag at={2} frag={frag}>
               <div style={{ borderLeft: '3px solid var(--green)', paddingLeft: 12 }}>
                 <div style={{ fontWeight: 700, color: 'var(--green)', fontSize: '0.78em', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 3 }}>
-                  Fix 1 — Give the DM More Stopping Freedom
+                  Fix 1: Give the DM More Stopping Freedom
                 </div>
                 <div style={{ fontSize: '0.88em', lineHeight: 1.45 }}>
-                  Allow <M m="K" /> stopping opportunities — get the reward if <em>any</em> of
+                  Allow <M m="K" /> stopping opportunities; get the reward if <em>any</em> of
                   them is the best. When <M m="K = N" />, the DM is guaranteed to select
                   the best candidate.
                 </div>
@@ -2176,7 +2179,7 @@ function S23({ frag }) {
             <Frag at={6} frag={frag}>
               <div style={{ borderLeft: '3px solid var(--gold)', paddingLeft: 12 }}>
                 <div style={{ fontWeight: 700, color: 'var(--gold)', fontSize: '0.78em', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 3 }}>
-                  Fix 2 — Change the Payoff Structure
+                  Fix 2: Change the Payoff Structure
                 </div>
                 <div style={{ fontSize: '0.88em', lineHeight: 1.45 }}>
                   Replace "pick the best" with a <strong>competitive ratio</strong> against a
@@ -2216,7 +2219,7 @@ function S25() {
       accent="var(--green)"
       eyebrow="Part IV"
       title="Data-Driven Sequential Decision-Making in Practice"
-      sub="Applying the thesis framework to real-world settings — industry collaborations with SIA and NUS Executive Education Office."
+      sub="Applying the thesis framework to real-world settings; industry collaborations with SIA and NUS Executive Education Office."
       footer="Abdelhakmi · Keppo · Tan (2021–2026)"
     />
   )
@@ -2234,44 +2237,44 @@ function S25b() {
         {/* ── PROJECT 1: SIA Pilot Training ── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, borderRight: '1px solid var(--border)', paddingRight: 20 }}>
           <div style={{ fontWeight: 700, color: 'var(--green)', fontSize: '0.78em', textTransform: 'uppercase', letterSpacing: '0.08em', paddingBottom: 4, borderBottom: '2px solid var(--green)' }}>
-            SIA — Personalized Pilot Training
+            SIA: Personalized Pilot Training
           </div>
           <Intuition>
-            Pilot competency is <em>latent and evolving</em> — yet training follows <strong>standardized programs</strong> that cannot adapt in real time to individual skill trajectories. Observed only through noisy simulator grades and instructor assessments.
+            Pilot competency is <em>latent and evolving</em>, yet training follows <strong>standardized programs</strong> that cannot adapt in real time to individual skill trajectories. Observed only through noisy simulator grades and instructor assessments.
           </Intuition>
           <div className="thm navy" style={{ flex: 1 }}>
             <div className="thm-lbl">Approach</div>
             <div className="thm-body" style={{ fontSize: '0.86em' }}>
-              <strong>Observable Behaviors (OBs):</strong> exploit the causal structure of grading — instructors assess OBs, so we extract OBs from grades to recover true latent skills. Kalman filtering with OBs sharply reduces estimation uncertainty.
+              <strong>Observable Behaviors (OBs):</strong> exploit the causal structure of grading; instructors assess OBs, so we extract OBs from grades to recover true latent skills. Kalman filtering with OBs sharply reduces estimation uncertainty.
               <br /><br />
-              <strong>Common context across pilots</strong> (→ Part II: common shocks) enables cross-pilot data pooling — the system learns from all pilots simultaneously.
+              <strong>Common context across pilots</strong> (→ Part II: common shocks) enables cross-pilot data pooling; the system learns from all pilots simultaneously.
               <br /><br />
               <strong>Constrained RL policy</strong> selects the next simulator scenario from the estimated skill state (→ Part I: dynamic control under partial information).
             </div>
           </div>
           <div style={{ borderLeft: '3px solid var(--green)', paddingLeft: 10, fontSize: '0.82em', color: '#445', lineHeight: 1.45 }}>
-            Tractable POMDP — real-time personalisation in a safety-critical environment.
+            Tractable POMDP; real-time personalisation in a safety-critical environment.
           </div>
         </div>
 
         {/* ── PROJECT 2: NUS Exec Ed ── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, paddingLeft: 4 }}>
           <div style={{ fontWeight: 700, color: 'var(--blue)', fontSize: '0.78em', textTransform: 'uppercase', letterSpacing: '0.08em', paddingBottom: 4, borderBottom: '2px solid var(--blue)' }}>
-            NUS Exec Ed — Marketing Budget Allocation
+            NUS Exec Ed: Marketing Budget Allocation
           </div>
           <Intuition>
-            Allocate a fixed budget across programs and global markets. Attractiveness evolves with <strong>unknown drift</strong> — observed only through noisy Google Analytics traffic data.
+            Allocate a fixed budget across programs and global markets. Attractiveness evolves with <strong>unknown drift</strong>, observed only through noisy Google Analytics traffic data.
           </Intuition>
           <div className="thm navy" style={{ flex: 1 }}>
             <div className="thm-lbl">Approach</div>
             <div className="thm-body" style={{ fontSize: '0.86em' }}>
-              <strong>VAR(1) state-space model:</strong> program attractiveness follows a Vector Autoregression of order 1 — unknown parameters filtered sequentially from web analytics via Kalman filter.
+              <strong>VAR(1) state-space model:</strong> program attractiveness follows a Vector Autoregression of order 1; unknown parameters filtered sequentially from web analytics via Kalman filter.
               <br /><br />
-              <strong>Estimate-then-optimise:</strong> mean-variance allocation with binary campaign activation and operational budget constraints — resource allocation under <em>persistent</em> uncertainty.
+              <strong>Estimate-then-optimise:</strong> mean-variance allocation with binary campaign activation and operational budget constraints; resource allocation under <em>persistent</em> uncertainty.
             </div>
           </div>
           <div style={{ borderLeft: '3px solid var(--blue)', paddingLeft: 10, fontSize: '0.82em', color: '#445', lineHeight: 1.45 }}>
-            Currently implementing and testing with real office data — first adaptive quantitative tool replacing static heuristic spend.
+            Currently implementing and testing with real office data; first adaptive quantitative tool replacing static heuristic spend.
           </div>
         </div>
 
@@ -2290,7 +2293,7 @@ function S26() {
       accent="var(--gold)"
       eyebrow="Synthesis"
       title="Thesis Contributions at a Glance"
-      sub="Three papers. One theme. Sequential decisions under uncertainty — with partial information, distributional ambiguity, and adaptive learning."
+      sub="Three papers. One theme. Sequential decisions under uncertainty, with partial information, distributional ambiguity, and adaptive learning."
       footer="Abdelhakmi (2026) · Ph.D. Thesis"
     />
   )
@@ -2306,17 +2309,17 @@ function S27({ frag }) {
     <ContentSlide title="Contributions at a Glance" stripe="var(--gold)">
       <div className="three-col" style={{ gap: 14, flex: 1 }}>
         <Frag at={0} frag={frag}>
-          <Card color="blue" title="Part I — Dynamic Black–Litterman" style={{ height: '100%', padding: '16px 18px' }}>
+          <Card color="blue" title="Part I: Dynamic Black–Litterman" style={{ height: '100%', padding: '16px 18px' }}>
             <strong>First framework to embed forward-looking views into a continuous-time dynamic model.</strong>
             <ul style={{ marginTop: 16, paddingLeft: 16, fontSize: '0.88em', lineHeight: 1.65 }}>
-              <li style={li}>Mismatched horizons — no horizon-matching constraint</li>
+              <li style={li}>Mismatched horizons: no horizon-matching constraint</li>
               <li style={li}>A view transforms the return process into a Brownian bridge</li>
               <li style={li}>New hedging demand: hedge the predictor, not just the asset</li>
             </ul>
           </Card>
         </Frag>
         <Frag at={1} frag={frag}>
-          <Card color="gold" title="Part II — Dynamic Factor Models" style={{ height: '100%', padding: '16px 18px' }}>
+          <Card color="gold" title="Part II: Dynamic Factor Models" style={{ height: '100%', padding: '16px 18px' }}>
             <strong>Views on the drivers reshape how contextual information is used.</strong>
             <ul style={{ marginTop: 16, paddingLeft: 16, fontSize: '0.88em', lineHeight: 1.65 }}>
               <li style={li}>Forecasts target future factor states, not outcomes directly</li>
@@ -2326,10 +2329,10 @@ function S27({ frag }) {
           </Card>
         </Frag>
         <Frag at={2} frag={frag}>
-          <Card color="red" title="Part III — Rethinking Robustness" style={{ height: '100%', padding: '16px 18px' }}>
+          <Card color="red" title="Part III: Rethinking Robustness" style={{ height: '100%', padding: '16px 18px' }}>
             <strong>When does worst-case optimization actually make you robust?</strong>
             <ul style={{ marginTop: 16, paddingLeft: 16, fontSize: '0.88em', lineHeight: 1.65 }}>
-              <li style={li}>DRO leaves the nominal policy unchanged — across all variants and uncertainty sets</li>
+              <li style={li}>DRO leaves the nominal policy unchanged, across all variants and uncertainty sets</li>
               <li style={li}>The Robustness Paradox: DRO-optimal yet maximally sensitive</li>
               <li style={li}>True robustness requires process redesign, not a better objective</li>
             </ul>
@@ -2338,7 +2341,7 @@ function S27({ frag }) {
       </div>
       <Frag at={3} frag={frag}>
         <Key style={{ marginTop: 10 }}>
-          How to optimally <strong>incorporate forward-looking information</strong> into sequential decisions — and when <strong>worst-case optimization fails</strong> to deliver robustness.
+          How to optimally <strong>incorporate forward-looking information</strong> into sequential decisions, and when <strong>worst-case optimization fails</strong> to deliver robustness.
         </Key>
       </Frag>
     </ContentSlide>
@@ -2356,7 +2359,7 @@ function S28({ frag }) {
       <div className="three-col" style={{ gap: 12, marginTop: 20 }}>
         <Frag at={0} frag={frag}>
           <Card color="blue" title="Forward-Looking Views Beyond Finance" style={{}}>
-            <strong>Extend to operational settings — and rethink what a "view" can be.</strong>
+            <strong>Extend to operational settings; rethink what a "view" can be.</strong>
             <ul style={{ marginTop: 10, paddingLeft: 16, fontSize: '0.88em', lineHeight: 1.6 }}>
               <li style={li}>Inventory management and revenue management with expert forecasts</li>
               <li style={li}>AI and LLM outputs as structured forward-looking signals</li>
@@ -2369,7 +2372,7 @@ function S28({ frag }) {
             <strong>How does ambiguity aversion reshape exploration vs. exploitation?</strong>
             <ul style={{ marginTop: 10, paddingLeft: 16, fontSize: '0.88em', lineHeight: 1.6 }}>
               <li style={li}>Extends to Prophet Inequalities, Pandora's Box, newsvendor</li>
-              <li style={li}>Effect is nuanced — can increase <em>or</em> decrease exploration</li>
+              <li style={li}>Effect is nuanced; can increase <em>or</em> decrease exploration</li>
               <li style={li}>General theory of ambiguity aversion in dynamic sequential problems</li>
             </ul>
           </Card>
@@ -2380,14 +2383,14 @@ function S28({ frag }) {
             <ul style={{ marginTop: 10, paddingLeft: 16, fontSize: '0.88em', lineHeight: 1.6 }}>
               <li style={li}>Hedge exploration shocks through mechanism design</li>
               <li style={li}>Newsvendor: supply options, secondary markets, batching</li>
-              <li style={li}>Not all hedges work — identify which levers create genuine robustness</li>
+              <li style={li}>Not all hedges work; identify which levers create genuine robustness</li>
             </ul>
           </Card>
         </Frag>
       </div>
       <Frag at={3} frag={frag}>
         <Key style={{ marginTop: 14 }}>
-          A unified understanding of how <strong>information incorporation</strong> and <strong>robustness</strong> interact in sequential decision-making — across finance, operations, and beyond.
+          A unified understanding of how <strong>information incorporation</strong> and <strong>robustness</strong> interact in sequential decision-making, across finance, operations, and beyond.
         </Key>
       </Frag>
     </ContentSlide>
